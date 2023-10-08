@@ -11,15 +11,8 @@ import banner2 from "../../../src/image/banner/banner2.png";
 
 function Home_banner() {
   const StyledSlider = styled(Slider)`
-    .slick-slide > div {
-      margin: 0 10px;
-    }
-    .slick-list {
-      margin: 0 -10px;
-    }
-
     .slick-dots {
-      bottom: -35px;
+      bottom: -45px;
     }
   `;
 
@@ -38,6 +31,15 @@ function Home_banner() {
   return (
     <div className="homeBannerContainer">
       <div className="homeBannerBox">
+        <div className="homeBannerShadowBox"></div>
+        <div className="homeBannerTextContainer">
+          <div className="homeBannerTextBox">
+            <h1 className="homeBannerText">
+              최고의 복지 <br /> Wellfare에서 <br /> 안성맞춤의 서비스를
+              만나보세요.
+            </h1>
+          </div>
+        </div>
         <StyledSlider {...settings}>
           <div className="homeBannerImageBox">
             <img className="homeBannerImage" src={banner0} alt="0번째 배너" />

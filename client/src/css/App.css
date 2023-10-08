@@ -6,6 +6,14 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Danjo-bold-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Danjo-bold-Regular.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   /* Color */
   --white-color: #f5f5f5;
@@ -35,6 +43,12 @@
   --medium-padding: 36px;
   --big-padding: 40px;
   --bigger-padding: 48px;
+
+  --navi_li-zindex: 1;
+  --homeBannerShadowBox-zindex: 2;
+  --homeBannerTextContainer-zindex: 3;
+  --header-zindex: 4;
+  --pagination-zindex: 5;
 }
 
 * {
@@ -50,8 +64,8 @@ a:visited,
 a:hover,
 a:focus,
 a:active {
-  color: var(--black-color);
   text-decoration: none;
+  color: var(--black-color);
 }
 
 ul,
@@ -84,6 +98,7 @@ body {
   justify-content: center;
   align-items: center;
   overflow-x: hidden;
+  overflow-y: scroll;
   background-color: var(--white-color);
 }
 
@@ -102,13 +117,26 @@ body {
   display: none;
 }
 
+@keyframes Fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 /* header */
 .header {
-  height: 130px;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 130px;
   justify-content: center;
+  position: fixed;
+  width: 100%;
+  z-index: var(--header-zindex);
 }
 
 nav {
@@ -187,7 +215,7 @@ nav ul li {
 
 .navi_li {
   position: relative;
-  z-index: 1;
+  z-index: var(--navi_li-zindex);
 }
 
 @media (hover: hover) {
@@ -231,9 +259,63 @@ nav ul li {
   width: 100%;
 }
 
+.homeBannerShadowBox {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(
+    180deg,
+    var(--white-color) 0%,
+    var(--white-color) 20px,
+    rgba(255, 255, 255, 0) 100%
+  );
+  z-index: var(--homeBannerShadowBox-zindex);
+}
+
+.homeBannerTextContainer {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  -webkit-box-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  animation: 0.5s ease-in-out 0s 1 normal forwards running Fadein;
+  z-index: var(--homeBannerTextContainer-zindex);
+}
+
+.homeBannerTextBox {
+  margin-top: 225px;
+  -webkit-box-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+}
+
+.homeBannerText {
+  color: var(--black-color);
+  font-size: calc(var(--font-large) * 1.2);
+  line-height: 2.5;
+  text-align: center;
+  width: 100%;
+  font-family: "Danjo-bold-Regular";
+  letter-spacing: 3px;
+  background: linear-gradient(180deg, var(--white-color), var(--green-color));
+  color: transparent;
+  -webkit-background-clip: text;
+}
+
 .homeBannerImageBox {
   width: 100%;
-  height: 1000px;
+  height: 100vh;
 }
 
 .homeBannerImage {
@@ -294,13 +376,14 @@ nav ul li {
 
 /* search */
 .searchFilterBoxContainer {
-  width: 100%;
-  height: 600px;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 860px;
   justify-content: space-between;
-  margin-bottom: calc(var(--big-padding) * 2);
+  padding-bottom: 100px;
+  padding-top: 160px;
+  width: 100%;
 }
 
 .searchBoxContainer {
@@ -418,7 +501,7 @@ nav ul li {
   justify-content: center;
   margin: var(--big-padding) auto;
   font-size: var(--font-smaller);
-  z-index: 10000;
+  z-index: var(--pagination-zindex);
 }
 
 ul.pagination li {
