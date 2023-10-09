@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import classnames from "classnames";
 
 // image
-import mainLogo from "../../../src/image/logo/main_logo.svg";
+import mainLogo from "../../../src/image/logo/main_logo.png";
 
 function Header() {
   const [scrollPosition, setScrollPosition] = useState(0);
