@@ -16,6 +16,7 @@ function Home_banner() {
         <div className="homeBannerImageBox">
           <img className="homeBannerImage" src={banner} alt="2번째 배너" />
         </div>
+        <button className="homeIntroButton"></button>
       </div>
     </div>
   );

@@ -265,7 +265,6 @@ nav ul li {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: calc(var(--big-padding) * 2);
 }
 
 .homeBannerBox {
@@ -320,6 +319,21 @@ nav ul li {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* homeIntro */
+.homeIntroContainer {
+  padding: 120px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 400px;
+}
+
+.homeIntro {
+  font-size: var(--font-medium2);
 }
 
 /* service */
@@ -377,10 +391,10 @@ nav ul li {
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 860px;
+  height: 900px;
   justify-content: space-between;
   padding-bottom: 100px;
-  padding-top: 160px;
+  padding-top: 200px;
   width: 100%;
 }
 

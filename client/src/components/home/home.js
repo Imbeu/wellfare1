@@ -18,6 +18,15 @@ function Home() {
         <title>Wellfare :: 최고의 복지</title>
       </Helmet>
       <Home_banner />
+      <div className="homeIntroContainer">
+        <span className="homeIntro">
+          qwd
+          <br />
+          wqd
+          <br />
+          wqdqw
+        </span>
+      </div>
       {/* <div className="homeMainContainer">
         <div className="homeMainBox">
           <div className="homeMainTitle">서비스 목록</div>
