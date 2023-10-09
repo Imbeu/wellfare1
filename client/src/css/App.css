@@ -45,10 +45,9 @@
   --bigger-padding: 48px;
 
   --navi_li-zindex: 1;
-  --homeBannerShadowBox-zindex: 2;
-  --homeBannerTextContainer-zindex: 3;
-  --header-zindex: 4;
-  --pagination-zindex: 5;
+  --homeBannerTextContainer-zindex: 2;
+  --header-zindex: 3;
+  --pagination-zindex: 4;
 }
 
 * {
@@ -273,21 +272,6 @@ nav ul li {
   width: 100%;
 }
 
-.homeBannerShadowBox {
-  position: absolute;
-  top: 0px;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: linear-gradient(
-    180deg,
-    var(--white-color) 0%,
-    var(--white-color) 110px,
-    rgba(255, 255, 255, 0) 100%
-  );
-  z-index: var(--homeBannerShadowBox-zindex);
-}
-
 .homeBannerTextContainer {
   position: absolute;
   top: 0px;
@@ -305,7 +289,7 @@ nav ul li {
 }
 
 .homeBannerTextBox {
-  margin-top: 225px;
+  margin-top: 400px;
   -webkit-box-align: center;
   align-items: center;
   display: flex;
@@ -322,10 +306,7 @@ nav ul li {
   width: 100%;
   font-family: "Danjo-bold-Regular";
   letter-spacing: 3px;
-  /* background: linear-gradient(180deg, var(--white-color), var(--green-color)); */
-  /* background-image: linear-gradient(180deg, #d4fc79 0%, #96e6a1 100%); */
-  /* background-image: linear-gradient(180deg, #43e97b 0%, #38f9d7 100%); */
-  background-image: linear-gradient(to top, #3be33b 0%, yellow 100%);
+  background: linear-gradient(to right, #e6d5d4, #bbabab);
   color: transparent;
   -webkit-background-clip: text;
 }
