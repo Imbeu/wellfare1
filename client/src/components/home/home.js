@@ -20,13 +20,14 @@ function Home() {
       <Home_banner />
       <div className="homeIntroContainer">
         <span className="homeIntro">
-          qwd
+          몰라서 받지 못했던 지원금을 한눈에 조회하고 관리하세요.
           <br />
-          wqd
+          세상에서 제일 쉽고 간단한 복지 서비스,
           <br />
-          wqdqw
+          Wellfare와 함께하세요.
         </span>
       </div>
+      <div className="homeServiceIntroContainer"></div>
       {/* <div className="homeMainContainer">
         <div className="homeMainBox">
           <div className="homeMainTitle">서비스 목록</div>

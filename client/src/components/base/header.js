@@ -19,7 +19,15 @@ function Header() {
     <div className={scrollPosition < 100 ? "original_header" : "change_header"}>
       <div className="nav">
         <div className="logoBox">
-          <div className="logo">
+          <div
+            className="logo"
+            onClick={() => {
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              });
+            }}
+          >
             <Link to="/">
               <img
                 className={classnames(`header_logo`, `image100`)}

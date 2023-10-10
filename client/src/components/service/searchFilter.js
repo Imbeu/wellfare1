@@ -16,6 +16,7 @@ import { getService } from "../../store/modules/service";
 import lifeArrayList from "../../data/lifeArray";
 import intrsArrayList from "../../data/intrsArray";
 import gaguArrayList from "../../data/gaguArray";
+import sidoArrayList from "../../data/sidoArray";
 
 function SearchFilter() {
   const dispatch = useDispatch();
@@ -27,10 +28,13 @@ function SearchFilter() {
     getServiceListFirst();
   }, []);
 
+  let [age, setAge] = useState(0);
+  let [sido, setSido] = useState("전체");
   const [_filterSearchWord, onChangeFilterSearchWord] = useInput(searchWord);
   const [_filterLifeArray, setFilterLifeArray] = useState(lifeArray);
   const [_filterGaguArray, setFilterGaguArray] = useState(gaguArray);
   const [_filterIntrsArray, setFilterIntrsArray] = useState(intrsArray);
+  const [_filterSido, onChangeFilterSido] = useInput(sido);
 
   async function getServiceList() {
     dispatch(
@@ -57,6 +61,48 @@ function SearchFilter() {
       })
     );
   }
+
+  const selectBoxElements = document.querySelectorAll(".select");
+
+  function toggleSelectBox(selectBox) {
+    selectBox.classList.toggle("active");
+  }
+
+  function selectOption(optionElement) {
+    const selectBox = optionElement.closest(".select");
+    const selectedElement = selectBox.querySelector(".selected-value");
+    selectedElement.textContent = optionElement.textContent;
+  }
+
+  selectBoxElements.forEach((selectBoxElement) => {
+    selectBoxElement.addEventListener("click", function (e) {
+      const targetElement = e.target;
+      const isOptionElement = targetElement.classList.contains("option");
+
+      if (isOptionElement) {
+        selectOption(targetElement);
+      }
+
+      toggleSelectBox(selectBoxElement);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    const targetElement = e.target;
+    const isSelect =
+      targetElement.classList.contains("select") ||
+      targetElement.closest(".select");
+
+    if (isSelect) {
+      return;
+    }
+
+    const allSelectBoxElements = document.querySelectorAll(".select");
+
+    allSelectBoxElements.forEach((boxElement) => {
+      boxElement.classList.remove("active");
+    });
+  });
 
   return (
     <div className="searchFilterBoxContainer">
@@ -178,6 +224,77 @@ function SearchFilter() {
                   </div>
                 );
               })}
+            </div>
+          </div>
+        </div>
+        <div className="subFilterBoxContainer">
+          <div className="subFilterBox">
+            <div className="subFilterElementBox">
+              <div className="subFilterAgeContainer">
+                <span className="subFilterAgeTitle">나이</span>
+                <div className="subFilterAgeInputBox">
+                  <span className="subFilterAgeInputText">만</span>
+                  <input
+                    className="subFilterAgeInput"
+                    autocomplete="off"
+                    name="subFilterAgeInput"
+                    placeholder="0"
+                    value={age}
+                    onChange={(e) => {
+                      setAge(e.target.value);
+                    }}
+                  ></input>
+                  <span className="subFilterAgeInputText">세</span>
+                </div>
+              </div>
+              <div className="subFilterAreaContainer">
+                <div className="subFilterAreaBox">
+                  <span className="subFilterAreaTitle">지역</span>
+                  <div class="select">
+                    <div class="selected">
+                      <div class="selected-value">{sido}</div>
+                      <div class="arrow"></div>
+                    </div>
+                    <ul>
+                      {sidoArrayList.map((a, index) => (
+                        <li className="option" key={index}>
+                          {a}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  {/* <select
+                    className="subFilterAreaSelect"
+                    onChange={(e) => setSido(e.target.value)}
+                    value={sido}
+                  >
+                    {sidoArrayList.map((a, index) => (
+                      <option
+                        className="subFilterAreaOption"
+                        value={a}
+                        key={index}
+                      >
+                        {a}
+                      </option>
+                    ))}
+                  </select>
+                  <select
+                    className="subFilterAreaSelect"
+                    onChange={(e) => setSido(e.target.value)}
+                    value={sido}
+                  >
+                    {sidoArrayList.map((a, index) => (
+                      <option value={a} key={index}>
+                        {a}
+                      </option>
+                    ))}
+                  </select> */}
+                </div>
+              </div>
+            </div>
+            <div className="subFilterBtnContainter">
+              <button>초기화</button>
+              <button>검색</button>
             </div>
           </div>
         </div>
